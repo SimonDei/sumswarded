@@ -1,0 +1,30 @@
+<aside
+  x-bind:class="sidebarCollapsed ? 'nav-col' : 'nav-exp'"
+  x-data="{
+    sidebarCollapsed: false
+  }">
+  <img
+    class="menu"
+    x-bind:class="sidebarCollapsed ? 'menu-col' : 'menu-exp'"
+    src="/img/sidebar/menu.png"
+    alt="menu"
+    x-on:click="sidebarCollapsed = !sidebarCollapsed"
+  />
+
+  <div class="nav-items">
+    <a class="nav-item" href="/">
+      <img class="nav-item-img" src="/img/sidebar/spy-male_inactive.png" alt="search" />
+      <span class="ml-4">Summoner search</span>
+    </a>
+
+    <a class="nav-item" href="/champions">
+      <img class="nav-item-img" src="/img/sidebar/thor_inactive.png" alt="champions" />
+      <span class="ml-4">Champions</span>
+    </a>
+
+    <a class="nav-item" href="/statistics">
+      <img class="nav-item-img" src="/img/sidebar/statistics_inactive.png" alt="statistics" />
+      <span class="ml-4">Statistics</span>
+    </a>
+  </div>
+</aside>

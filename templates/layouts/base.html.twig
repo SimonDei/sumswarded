@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>{% block title %}Welcome!{% endblock %}</title>
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="stylesheet" href="/css/styles.dist.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  {% block styles %}{% endblock %}
+
+  <script type="text/javascript" src="https://unpkg.com/htmx.org"></script>
+  <script type="text/javascript" src="https://unpkg.com/alpinejs" defer></script>
+  {% block js %}{% endblock %}
+</head>
+<body class="grid">
+  {% include 'partials/header.html.twig' %}
+  {% include 'partials/sidebar.html.twig' %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

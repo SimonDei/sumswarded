@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #131E2B;
+    grid-column: span 2;
+    grid-row: 1;
+    display: flex;
+    height: var(--header-height);
+    width: 100%;
+}
+.navbar-brand {
+    color: #ea6536 !important;
+    font-family: 'Cairo', 'Segoe UI Light', sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    align-items: center;
+    gap: 0.3em;
+    width: min-content;
+}
+.navbar-brand img {
+    height: 1.7rem;
+    width: 1.7rem;
+}
+
+.download-btn {
+    background-color: #ea6536 !important;
+    cursor: pointer;
+    border: none;
+    border-radius: 100px;
+    font-size: medium;
+    padding: 5px 15px;
+}

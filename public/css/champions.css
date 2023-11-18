@@ -1,0 +1,140 @@
+* {
+    --champion-icons-back-color: rgb(15, 17, 39);
+    --champion-info-element-back-color: rgb(2, 3, 32);
+    --champions-box-color: #ea6536;
+    --champions-box-font: 'Montserrat', 'Segoe UI Light', sans-serif;
+    --champions-box-font-size: 1.5em;
+    --champion-icons-list-size: 80em;
+    --champion-icons-list-min-size: 50em;
+    --champion-icon-size: 5em;
+    --champion-icon-max-size: 30em;
+    --champion-icon-margin: 1em;
+}
+
+@media only screen and (max-width: 1024px) {
+    .filter-bar {
+        background-image: none !important;
+        background-color: #1e3344;
+    }
+}
+
+#filter-bar-champion-identifier {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 0 3% 0 3%;
+}
+
+.filter-bar-champion-name {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.filter-bar-champion-title {
+    font-family: 'Segoe UI';
+    font-weight: 300;
+    font-size: 24px;
+    color: silver;
+    margin: 0;
+}
+
+.filter-icon {
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+}
+.filter-icon-active {
+    background-color: #628a9c2b;
+    height: 50px;
+    width: 50px;
+}
+
+.champion-search-box {
+    color: #a2b7cf !important;
+    border-bottom-color: #a2b7cf !important;
+    height: 50px;
+}
+
+.filter-bar {
+    height: var(--filter-bar-height);
+    background-image: linear-gradient(100deg, #1e3344 85%, rgb(52, 70, 88) 15%);
+    display: grid;
+    grid-template-columns: 85% 15%;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: start;
+    column-gap: .6em;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    box-shadow: inset 0 0 1em 0.05em rgba(0,0,0,0.3);
+    min-width: fit-content;
+    height: fit-content;
+    padding: .7em;
+}
+.filter-bar-search-components {
+    display: flex;
+    margin-right: 2em;
+}
+
+.filter-bar-champion-count {
+    font-family: 'Nexa', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+    text-align: center;
+    place-self: center;
+    margin-top: 5px;
+}
+
+.champion-icons {
+    display: flex;
+    width: 80%;
+    justify-content: start;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 0;
+    flex-wrap: wrap;
+    padding: 1.5em 2.5em 1.5em 2.5em;
+}
+.champion-icon {
+    height: var(--champion-icon-size);
+    width: var(--champion-icon-size);
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    border-radius: 5px;
+    align-self: center;
+    justify-self: center;
+    margin: .2em;
+}
+.champion-icon:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 2em 0.5em rgba(0, 191, 255, 0.2);
+}
+
+.champion-search-box {
+    border: 0;
+    background-color: transparent;
+    text-align: center;
+    border-bottom: 3px solid var(--champions-box-color);
+    color: var(--champions-box-color);
+    font-family: var(--champions-box-font);
+    font-size: var(--champions-box-font-size);
+    padding-bottom: 2.5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-column: 1;
+}
+
+.champions-list {
+    padding: 0;
+    height: calc(100vh - var(--header-height));
+
+    overflow-y: scroll;
+}

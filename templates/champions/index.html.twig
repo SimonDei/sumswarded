@@ -1,0 +1,88 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/css/champions.css" />
+{% endblock %}
+
+{% block content %}
+  <main class="champions-list" x-data="{
+    selectedOrdering: 1,
+    filterName: '',
+    setOrdering(ordering) {
+      this.selectedOrdering = ordering;
+      htmx.findAll('.champion-icons > a').forEach(element => element.remove());
+      htmx.ajax('GET', `/champions/list?sortType=${ordering}`, '.champion-icons');
+    },
+    searchChampions(event) {
+      this.filterName = event.target.value;
+      htmx.findAll('.champion-icons > a').forEach(element => element.remove());
+      htmx.ajax('GET', `/champions/list?sortType=${this.selectedOrdering}&filterName=${event.target.value}`, '.champion-icons');
+    }
+  }">
+    <div class="filter-bar md:bg-none md:bg-[#1e3344]">
+      <div class="filter-bar-search-components">
+        <input class="champion-search-box" type="text" maxlength="16" x-on:keyup.debounce="searchChampions($event)" />
+
+        <img
+          class="filter-icon"
+          x-bind:class="{ 'filter-icon-active': selectedOrdering === 1 }"
+          src="/img/champions/sorting-a-z.png"
+          alt="A-Z"
+          width="100"
+          height="100"
+          title="A-Z"
+          style="grid-column: 2;"
+          x-on:click="setOrdering(1)"
+        />
+        <img
+          class="filter-icon"
+          x-bind:class="{ 'filter-icon-active': selectedOrdering === 2 }"
+          src="/img/champions/sorting-z-a.png"
+          alt="Z-A"
+          width="100"
+          height="100"
+          title="Z-A"
+          style="grid-column: 3;"
+          x-on:click="setOrdering(2)"
+        />
+        <img
+          class="filter-icon"
+          x-bind:class="{ 'filter-icon-active': selectedOrdering === 3 }"
+          src="/img/champions/sorting-1-2.png"
+          alt="ID ascending"
+          width="100"
+          height="100"
+          title="ID ascending"
+          style="grid-column: 4;"
+          x-on:click="setOrdering(3)"
+        />
+        <img
+          class="filter-icon"
+          x-bind:class="{ 'filter-icon-active': selectedOrdering === 4 }"
+          src="/img/champions/sorting-2-1.png"
+          alt="ID descanding"
+          width="100"
+          height="100"
+          title="ID descanding"
+          style="grid-column: 5;"
+          x-on:click="setOrdering(4)"
+        />
+      </div>
+
+      <div class="hidden md:flex content-center justify-center">
+        <span class="filter-bar-champion-count">
+          <span class="highlightCount">0</span> results
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="champion-icons"
+      hx-get="/champions/list"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    >
+      <img class="htmx-indicator" src="/spinner.gif" alt="loading" width="48" height="48" />
+    </div>
+  </main>
+{% endblock %}

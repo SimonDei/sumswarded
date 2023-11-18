@@ -1,0 +1,10 @@
+<span class="filter-bar-champion-count" hx-swap-oob="outerHTML:.filter-bar-champion-count">
+  <span class="highlightCount">{{ champions|length }}</span> results
+</span>
+
+{% for champion in champions %}
+  <a href="/champion/{{ champion.key }}">
+    <img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/13.22.1/img/champion/{{ champion.id }}.png" alt="{{ champion.name }}" title="{{ champion.name }}" width="100" height="100" />
+  </a>
+{% endfor %}
+<img class="htmx-indicator" src="/spinner.gif" alt="loading" width="48" height="48" />
